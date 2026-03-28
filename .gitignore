@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local scratch files
+hehe.txt
+
+# large course project artifacts
+GroupAABLM_BID3000_2025/ETL/Dataset/
+GroupAABLM_BID3000_2025/Dashboard/*.pbix
