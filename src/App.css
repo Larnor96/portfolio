@@ -121,6 +121,7 @@
 
 .portfolio-section {
   padding-top: 48px;
+  position: relative;
 }
 
 .portfolio-section--tight {
@@ -132,10 +133,47 @@
   margin-bottom: 24px;
 }
 
+.portfolio-section__intro--framed {
+  margin-bottom: 32px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-section--divided {
+  padding-top: 72px;
+}
+
+.portfolio-section--divided::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 28px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 158, 11, 0.55) 12%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(96, 165, 250, 0.4) 88%,
+    transparent
+  );
+}
+
 .portfolio-section h2,
 .portfolio-section h3 {
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.05em;
+}
+
+.portfolio-section__intro .portfolio-kicker {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.portfolio-section__intro h2,
+.portfolio-section__intro h3,
+.portfolio-section__intro .course-page-title {
+  margin-bottom: 14px;
 }
 
 .course-page-title {
@@ -240,10 +278,120 @@
   gap: 10px;
 }
 
-.course-content-grid {
+.bi-folder-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
+}
+
+.bi-assets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bi-file-list {
+  display: grid;
+  gap: 12px;
+}
+
+.bi-file-list__item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.code-preview {
+  display: grid;
+  gap: 14px;
+}
+
+.code-preview__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 0.92rem;
+}
+
+.code-block {
+  margin: 0;
+  padding: 18px;
+  overflow: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #050b15;
+  color: #d8e6ff;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.analytics-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.analytics-gallery__image {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.analytics-gallery__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dashboard-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dashboard-gallery__image {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dashboard-gallery__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.pdf-preview {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  min-height: 340px;
+}
+
+.pdf-preview iframe {
+  width: 100%;
+  height: 340px;
+  border: 0;
+  background: white;
+}
+
+.pdf-preview__content {
+  display: grid;
+  gap: 12px;
 }
 
 .portfolio-section--split {
@@ -271,7 +419,11 @@
   .portfolio-hero,
   .portfolio-section--split,
   .subject-layout,
-  .course-content-grid {
+  .bi-folder-grid,
+  .analytics-gallery,
+  .dashboard-gallery,
+  .bi-assets-grid,
+  .pdf-grid {
     grid-template-columns: 1fr;
   }
 
