@@ -3,13 +3,21 @@ import "./App.css";
 import heroHeaderImage from "./assets/portfolioHeader.png";
 import descriptiveAnalyticsImage from "./assets/bi/descriptive_analytics_sales.png";
 import predictiveAnalyticsImage from "./assets/bi/predictive_model_next_month.png";
+import biHeaderImage from "./assets/BIDheaderbilde.png";
 import finalReportPdf from "./assets/bi/BID3000_FINAL_REPORT.pdf";
 import erdPdf from "./assets/bi/ERD.pdf";
 import dashboardDocumentationPdf from "./assets/bi/Dashboard_Documentation.pdf";
-import dashboardPage1 from "./assets/bi/dashboard-pages/dashboard-page-1.png";
-import dashboardPage2 from "./assets/bi/dashboard-pages/dashboard-page-2.png";
-import dashboardPage3 from "./assets/bi/dashboard-pages/dashboard-page-3.png";
-import dashboardPage4 from "./assets/bi/dashboard-pages/dashboard-page-4.png";
+import deliveryDashboardOverview from "./assets/bi/dashboard-pages/delivery-dashboard-overview.png";
+import deliveryDashboardRegionalMap from "./assets/bi/dashboard-pages/delivery-dashboard-regional-map.png";
+import deliveryDashboardMonthlyTrends from "./assets/bi/dashboard-pages/delivery-dashboard-monthly-trends.png";
+import deliveryDashboardLateByRegion from "./assets/bi/dashboard-pages/delivery-dashboard-late-by-region.png";
+import mainDashboard from "./assets/bi/dashboard-pages/main-dashboard.png";
+import detailedAnalysis from "./assets/bi/dashboard-pages/detailed-analysis.png";
+import drillThrough from "./assets/bi/dashboard-pages/drill-through.png";
+import aiCardImage from "./assets/AIBilde.png";
+import golfStoreHeroImage from "./assets/golfstore/homepage.png";
+import golfStoreLogoImage from "./assets/golfstore/kollegutta.png";
+import garbageMlmDemoImage from "./assets/garbagemlm-demo.png";
 import { Button, Card, CardBody, Chip, Link, Tab, Tabs } from "@heroui/react";
 
 const courses = [
@@ -222,12 +230,25 @@ const courses = [
     ],
   },
   {
+    id: "app2000-golfstore",
+    title: "APP2000 GolfStore",
+    tag: "Fullstack",
+    semester: "Applikasjonsprosjekt",
+    summary:
+      "Et fullstack gruppeprosjekt for en golfbutikk med Next.js frontend, Spring Boot backend, PostgreSQL, Docker og Keycloak for autentisering.",
+    focus: [
+      "Frontend i Next.js og React",
+      "REST API med Spring Boot",
+      "Sikker autentisering med Keycloak",
+    ],
+  },
+  {
     id: "business-intelligence-og-datavarehus",
-    title: "Business Intelligence og datavarehus",
+    title: "Business Intelligence og datavarehus (USN)",
     tag: "BI",
     semester: "Analysefordypning",
     summary:
-      "Arbeid med datavarehus, ETL, forretningsanalyse og rapporteringsflyt for beslutningsstøtte. Olist-prosjektet passer naturlig inn her.",
+      "Arbeid med datavarehus, ETL, forretningsanalyse og rapporteringsflyt for beslutningsstøtte.",
     focus: [
       "Datavarehusdesign",
       "ETL og rapportering",
@@ -236,7 +257,7 @@ const courses = [
   },
   {
     id: "artificial-intelligence-for-business-applications",
-    title: "Artificial Intelligence for Business Applications",
+    title: "Artificial Intelligence for Business Applications (USN)",
     tag: "AI",
     semester: "Anvendt intelligens",
     summary:
@@ -249,7 +270,7 @@ const courses = [
   },
   {
     id: "applikasjonsutvikling-for-mobile-enheter",
-    title: "Applikasjonsutvikling for mobile enheter",
+    title: "Applikasjonsutvikling for mobile enheter (USN)",
     tag: "Mobile",
     semester: "Mobil utvikling",
     summary:
@@ -262,7 +283,7 @@ const courses = [
   },
   {
     id: "iot-teknologi-og-mikrokontrollere",
-    title: "IoT-teknologi og Mikrokontrollere i Smarte Systemer",
+    title: "IoT-teknologi og Mikrokontrollere i Smarte Systemer (USN)",
     tag: "IoT",
     semester: "Innebygde systemer",
     summary:
@@ -289,24 +310,186 @@ const courses = [
 ];
 
 const featureMap = {
+  "app2000-golfstore": {
+    label: "Prosjekt",
+    title: "GolfStore",
+    text: "Et fullstack e-commerce prosjekt bygget som gruppeoppgave, der jeg bidro både på frontend og backend og hadde særskilt ansvar for søkefunksjonalitet og API-integrasjon.",
+    chips: ["Next.js", "Spring Boot", "PostgreSQL", "Keycloak", "Docker"],
+  },
   "business-intelligence-og-datavarehus": {
-    label: "Relevant prosjekt",
+    label: "Prosjekt",
     title: "Olist E-commerce Analytics",
     text: "Dette faget henger direkte sammen med prosjektet i repoet: PostgreSQL-datavarehus, Pentaho ETL, SQL-analyse, Python-forecasting og Power BI.",
     chips: ["PostgreSQL", "Pentaho", "Python", "Power BI"],
   },
   "applikasjonsutvikling-for-web": {
-    label: "Relevant prosjekt",
+    label: "Prosjekt",
     title: "Selve portfolien",
     text: "Denne React-portfolien kan brukes som en del av webapplikasjonsfaget fordi den viser struktur, UI-komposisjon og presentasjon av arbeid.",
     chips: ["React", "Hero UI", "Frontend"],
   },
   "artificial-intelligence-for-business-applications": {
-    label: "Relevant prosjekt",
+    label: "Prosjekt",
     title: "Forecasting og analyse",
     text: "Prediksjonsdelen i Olist-prosjektet passer også naturlig her, siden den bruker modellbasert analyse for beslutningsstøtte.",
     chips: ["Machine learning", "Forecasting", "Business analytics"],
   },
+};
+
+const golfStoreProjectShowcase = {
+  title: "GolfStore",
+  intro:
+    "Prosjektet består av en frontend for nettbutikk og en backend med API, database og autentisering. Begge repositoriene er lagt inn i denne portfolio-mappen.",
+  sections: [
+    {
+      title: "Frontend repository",
+      description:
+        "Next.js-applikasjon med React, UI-komponenter, søkefunksjonalitet og integrasjon mot backend-API-et.",
+      items: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Keycloak JS"],
+    },
+    {
+      title: "Backend repository",
+      description:
+        "Spring Boot-applikasjon med REST-endepunkter, PostgreSQL, JWT-beskyttelse, Docker Compose og Swagger/OpenAPI.",
+      items: ["Java 17", "Spring Boot 3", "Spring Security", "PostgreSQL", "Docker Compose"],
+    },
+    {
+      title: "Mine bidrag",
+      description:
+        "Jeg jobbet med frontend, deler av backend og tok ledelsen på søkefunksjonalitet og integrasjon mellom klient og API.",
+      items: [
+        "UI-komponenter og featureutvikling",
+        "API-kobling mellom frontend og backend",
+        "Autentisering og brukerflyt med Keycloak",
+        "Søkefunksjonalitet og backend search-endepunkter",
+      ],
+    },
+    {
+      title: "Lokal kjøring",
+      description:
+        "Backend startes med Docker Compose og frontend kjøres som egen Next.js-app med miljøvariabler mot lokal API og Keycloak.",
+      items: ["Backend: localhost:8080", "Frontend: localhost:3000", "Keycloak: localhost:8180", "Swagger UI tilgjengelig på backend"],
+    },
+  ],
+};
+
+const golfStoreRepoLinks = [
+  {
+    title: "Frontend repo",
+    href: "https://github.com/Larnor96/golfstore",
+    description: "Fork av frontend-repoet som viser mitt arbeid med Next.js-klienten.",
+  },
+  {
+    title: "Backend repo",
+    href: "https://github.com/Larnor96/GolfStoreBackend",
+    description: "Fork av backend-repoet med Spring Boot, PostgreSQL, Keycloak og Docker-oppsett.",
+  },
+];
+
+const golfStoreArchitecture = [
+  "Frontend: Next.js 15, React 19, TypeScript og Tailwind-baserte UI-komponenter",
+  "Backend: Spring Boot 3.4, Spring Security, Spring Data JPA og OpenAPI",
+  "Database: PostgreSQL med seed-data og lokal oppstart via Docker Compose",
+  "Auth: Keycloak med JWT-baserte roller og beskyttede endepunkter",
+];
+
+const golfStorePresentation = {
+  title: "GolfStore",
+  intro:
+    "GolfStore er et fullstack nettbutikkprosjekt for golfutstyr, bygget som en gruppeoppgave med tydelig delt frontend- og backend-arkitektur.",
+  highlights: [
+    { value: "2", label: "separate repoer" },
+    { value: "5+", label: "sentrale teknologier" },
+    { value: "3", label: "kjørende lokale tjenester" },
+  ],
+  gallery: [
+    {
+      title: "Landing page og visuell profil",
+      src: golfStoreHeroImage,
+      description:
+        "Forsiden bruker en tydelig hero-seksjon med golfprofil, produktfokus og en egen butikkidentitet.",
+    },
+    {
+      title: "Logo og merkevare",
+      src: golfStoreLogoImage,
+      description:
+        "Prosjektet fikk en egen visuell identitet med Kolleggutta Golf Butikken som merkevare i frontend-opplevelsen.",
+    },
+  ],
+  rolePoints: [
+    "Utviklet UI-komponenter og flyt i frontend med Next.js og React",
+    "Koblet frontend mot Spring Boot-endepunkter for produkter og brukerfunksjoner",
+    "Arbeidet med autentisering og sesjonshåndtering via Keycloak",
+    "Tok ledelsen på søkefunksjonalitet og integrasjonen mot backend-søk",
+  ],
+  userFlows: [
+    {
+      title: "Produktutforskning",
+      description:
+        "Brukeren kan bla i produkter, kategorier og enkel produktvisning hentet fra REST API-et.",
+    },
+    {
+      title: "Søk og filtrering",
+      description:
+        "Søkefunksjonen var en sentral del av mitt bidrag og koblet frontend-opplevelsen til backendens produktsøk.",
+    },
+    {
+      title: "Innlogging og handlekurv",
+      description:
+        "Beskyttede brukerfunksjoner bruker Keycloak og tokenbasert tilgang til shopping cart og brukerdata.",
+    },
+  ],
+  runSteps: [
+    "Start backendstakken med `docker-compose up --build -d` i `GolfStoreBackend`.",
+    "Start frontenden med `npm install` og `npm run dev -- --port 3001` i `golfstore`.",
+    "Bruk `http://localhost:3001` for frontend, `http://localhost:8080` for API og `http://localhost:8180` for Keycloak.",
+  ],
+};
+
+const garbageMlmProject = {
+  title: "GarbageMLM",
+  intro:
+    "Et maskinlæringsprosjekt for bildegjenkjenning av avfall, der en trent Keras-modell klassifiserer bilder i fem avfallskategorier via et enkelt Gradio-grensesnitt.",
+  sections: [
+    {
+      title: "Modell og kategorier",
+      description:
+        "Prosjektet klassifiserer bilder i fem klasser: glass, metall, matavfall, papp/papir/kartong og plastikk.",
+      items: ["5 avfallskategorier", "CNN-basert bildeklassifisering", "Softmax sannsynlighetsfordeling"],
+    },
+    {
+      title: "Teknologi",
+      description:
+        "Løsningen er bygget med TensorFlow/Keras for trening og inferens, og Gradio for et lett webgrensesnitt for demo.",
+      items: ["TensorFlow", "Keras", "NumPy", "Pillow", "Gradio"],
+    },
+    {
+      title: "Prosjektfiler",
+      description:
+        "Repoet inneholder både treningsskript, demoapp, requirements og en ferdigtrent modellfil klar for lokal bruk.",
+      items: ["train_model.py", "app.py", "requirements.txt", "waste_management_ai.keras"],
+    },
+  ],
+};
+
+const garbageMlmHighlights = [
+  "Bildeklassifisering med konvolusjonelt nevralt nettverk",
+  "Datapreprosessering og enkel data augmentation under trening",
+  "Tidlig stopp, læringsratejustering og model checkpoint i treningsløpet",
+  "Lokal demo via Gradio for opplasting og klassifisering av bilder",
+];
+
+const garbageMlmRunSteps = [
+  "Installer avhengigheter med `pip install -r requirements.txt` i `GarbageMLM`.",
+  "Start demoen med `python app.py`.",
+  "Last opp et bilde av avfall i Gradio-grensesnittet for å få predikert klasse og sannsynligheter.",
+];
+
+const garbageMlmRepo = {
+  title: "GarbageMLM repository",
+  href: "https://github.com/Larnor96/GarbageMLM",
+  description:
+    "Repoet viser både treningsløpet og den kjørbare demoappen for avfallsklassifisering.",
 };
 
 const biProjectShowcase = {
@@ -434,14 +617,40 @@ JOIN dwh.dim_product dp ON foi.product_key = dp.product_key
 GROUP BY dp.product_category_name
 ORDER BY revenue_rank
 LIMIT 10;`,
-  etl: `<?xml version="1.0" encoding="UTF-8"?>
-<transformation>
-  <info>
-    <name>fact_order_items</name>
-    <trans_type>Normal</trans_type>
-  </info>
-  <!-- Pentaho transformation for loading sales facts -->
-</transformation>`,
+  etl: `<step>
+  <name>ADD TOTAL PRICE</name>
+  <type>Calculator</type>
+  <calculation>
+    <field_name>total_price</field_name>
+    <calc_type>ADD</calc_type>
+    <field_a>price</field_a>
+    <field_b>freight_value</field_b>
+    <value_type>Number</value_type>
+    <remove>N</remove>
+  </calculation>
+</step>
+
+<step>
+  <name>CSV_CUSTOMERS</name>
+  <type>CsvInput</type>
+  <filename>\${Internal.Transformation.Filename.Directory}\\dataset\\olist_customers_dataset.csv</filename>
+  <separator>,</separator>
+  <enclosure>"</enclosure>
+  <header>Y</header>
+  <lazy_conversion>Y</lazy_conversion>
+  <fields>
+    <field>
+      <name>customer_id</name>
+      <type>String</type>
+      <trim_type>none</trim_type>
+    </field>
+    <field>
+      <name>customer_unique_id</name>
+      <type>String</type>
+      <trim_type>none</trim_type>
+    </field>
+  </fields>
+</step>`,
 };
 
 const biInsights = [
@@ -472,11 +681,55 @@ const biPdfFiles = [
 ];
 
 const biDashboardPages = [
-  { title: "Dashboard page 1", src: dashboardPage1 },
-  { title: "Dashboard page 2", src: dashboardPage2 },
-  { title: "Dashboard page 3", src: dashboardPage3 },
-  { title: "Dashboard page 4", src: dashboardPage4 },
+  { title: "1.1 Figure 1 - Cards Overview", src: deliveryDashboardOverview },
+  { title: "1.2 Figure 2 - Regional Map", src: deliveryDashboardRegionalMap },
+  { title: "1.3 Figure 3 - Monthly Delivery Trends", src: deliveryDashboardMonthlyTrends },
+  { title: "1.4 Figure 4 - Late Deliveries by Region", src: deliveryDashboardLateByRegion },
+  { title: "2. Main Dashboard", src: mainDashboard },
+  { title: "3. Detailed Sales Analysis", src: detailedAnalysis },
+  { title: "4. Drill Through Function", src: drillThrough },
 ];
+
+const featuredProjectIds = [
+  "app2000-golfstore",
+  "business-intelligence-og-datavarehus",
+  "applikasjonsutvikling-for-mobile-enheter",
+  "iot-teknologi-og-mikrokontrollere",
+  "artificial-intelligence-for-business-applications",
+];
+
+const featuredCardMedia = {
+  "app2000-golfstore": {
+    type: "image",
+    src: golfStoreLogoImage,
+    alt: "GolfStore logo",
+    className: "course-card__image course-card__image--contain",
+  },
+  "business-intelligence-og-datavarehus": {
+    type: "image",
+    src: mainDashboard,
+    alt: "Business Intelligence dashboard",
+    className: "course-card__image",
+  },
+  "artificial-intelligence-for-business-applications": {
+    type: "image",
+    src: aiCardImage,
+    alt: "AI project preview",
+    className: "course-card__image",
+  },
+  "applikasjonsutvikling-for-mobile-enheter": {
+    type: "panel",
+    kicker: "Mobile",
+    title: "App Flow",
+    accent: "course-card__panel course-card__panel--mobile",
+  },
+  "iot-teknologi-og-mikrokontrollere": {
+    type: "panel",
+    kicker: "IoT",
+    title: "Sensor Lab",
+    accent: "course-card__panel course-card__panel--iot",
+  },
+};
 
 function getRouteFromHash() {
   const hash = window.location.hash.replace(/^#/, "");
@@ -503,61 +756,83 @@ function navigateHome() {
 }
 
 function CourseCard({ course }) {
+  const media = featuredCardMedia[course.id];
+
   return (
     <button
       key={course.id}
-      className="course-card"
+      className={`course-card${media ? " course-card--with-image" : ""}`}
       onClick={() => navigateToCourse(course.id)}
       type="button"
     >
       <span className="course-card__tag">{course.tag}</span>
+      {media?.type === "image" ? (
+        <div className="course-card__image-wrap">
+          <img alt={media.alt} className={media.className} src={media.src} />
+        </div>
+      ) : null}
+      {media?.type === "panel" ? (
+        <div className={media.accent}>
+          <span>{media.kicker}</span>
+          <strong>{media.title}</strong>
+        </div>
+      ) : null}
       <h3>{course.title}</h3>
     </button>
   );
 }
 
 function HomePage() {
+  const featuredProjects = courses.filter((course) =>
+    featuredProjectIds.includes(course.id)
+  );
+
   return (
     <>
       <section className="portfolio-hero">
-        <div
-          className="portfolio-hero__copy"
-          style={{ "--hero-image": `url(${heroHeaderImage})` }}
-        >
-          <Chip
-            className="border-white/10 bg-white/10 text-white"
-            radius="sm"
-            variant="flat"
-          >
-            Study portfolio
-          </Chip>
-          <h1>Velkommen til min portfolio</h1>
-          <p>
-            Her finner du en oversikt over fagene jeg har hatt og prosjektene
-            jeg har jobbet med gjennom studiet.
-          </p>
-          <div className="portfolio-hero__actions">
-            <Button
-              as={Link}
-              className="bg-white font-semibold text-slate-950"
-              href="#subjects"
+        <div className="portfolio-hero__copy">
+          <div className="portfolio-hero__header">
+            <Chip
+              className="border border-slate-200 bg-white/85 text-slate-700 shadow-sm"
               radius="sm"
-              size="lg"
+              variant="flat"
             >
-              Se fag
-            </Button>
+              Project portfolio
+            </Chip>
+            <h1>Velkommen til min portfolio</h1>
+          </div>
+
+          <div className="portfolio-hero__media">
+            <img alt="Portfolio header" src={heroHeaderImage} />
+          </div>
+
+          <div className="portfolio-hero__footer">
+            <p>
+              Her finner du en oversikt over mine prosjekter og arbeid jeg har
+              gjort gjennom studiet.
+            </p>
+            <div className="portfolio-hero__actions">
+              <Button
+                as={Link}
+                className="bg-white font-semibold text-slate-950"
+                href="#subjects"
+                radius="sm"
+                size="lg"
+              >
+                Se prosjekter
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="portfolio-section" id="subjects">
         <div className="portfolio-section__intro">
-          <p className="portfolio-kicker">Fag</p>
-          <h2>Trykk på et kort for å åpne en egen side.</h2>
+          <p className="portfolio-kicker">Prosjekter</p>
         </div>
 
         <div className="course-grid">
-          {courses.map((course) => (
+          {featuredProjects.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
         </div>
@@ -569,13 +844,16 @@ function HomePage() {
 function CoursePage({ course }) {
   const selectedFeature = featureMap[course.id];
   const isBiCourse = course.id === "business-intelligence-og-datavarehus";
+  const isGolfStoreCourse = course.id === "app2000-golfstore";
+  const isAiCourse = course.id === "artificial-intelligence-for-business-applications";
+  const projectChips = selectedFeature?.chips ?? [course.tag, "Prosjekt"];
 
   return (
     <>
       <section className="portfolio-section portfolio-section--tight">
         <div className="course-page-back">
           <Button
-            className="border-white/15 bg-white/5 text-white"
+            className="border border-slate-200 bg-white text-slate-800 shadow-sm"
             onPress={navigateHome}
             radius="sm"
             variant="bordered"
@@ -585,25 +863,25 @@ function CoursePage({ course }) {
         </div>
 
         <div className="portfolio-section__intro">
-          <p className="portfolio-kicker">{course.tag}</p>
+          <p className="portfolio-kicker">Prosjekt</p>
           <h1 className="course-page-title">{course.title}</h1>
+          <p>{course.summary}</p>
         </div>
 
+        {isBiCourse ? (
+          <div className="course-page-header-media">
+            <img alt="Business Intelligence project header" src={biHeaderImage} />
+          </div>
+        ) : null}
+
         <div className="subject-layout">
-          <Card className="border border-white/10 bg-white/10 shadow-glow">
+          <Card className="border border-slate-200 bg-white/95 shadow-sm">
             <CardBody className="gap-6 p-6 md:p-8">
               <div className="subject-detail__header">
                 <div>
-                  <p className="portfolio-kicker">Fokusområder</p>
-                  <h3>Hva faget dekker</h3>
+                  <p className="portfolio-kicker">Innhold</p>
+                  <h3>Hva prosjektet omfatter</h3>
                 </div>
-                <Chip
-                  className="border-white/10 bg-white/5 text-white"
-                  radius="sm"
-                  variant="flat"
-                >
-                  {course.semester}
-                </Chip>
               </div>
 
               <div className="subject-focus">
@@ -617,31 +895,22 @@ function CoursePage({ course }) {
             </CardBody>
           </Card>
 
-          <Card className="border border-white/10 bg-slate-950/50">
+          <Card className="border border-slate-200 bg-white/95 shadow-sm">
             <CardBody className="gap-5 p-6 md:p-8">
-              <p className="portfolio-kicker">
-                {selectedFeature ? selectedFeature.label : "Kobling"}
-              </p>
-              <h3>
-                {selectedFeature
-                  ? selectedFeature.title
-                  : "Prosjekter og arbeid"}
-              </h3>
-              {selectedFeature ? <p>{selectedFeature.text}</p> : null}
+              <p className="portfolio-kicker">Teknologier</p>
+              <h3>Teknologier</h3>
               <div className="portfolio-card__chips">
-                {(selectedFeature?.chips ?? [course.tag, "Prosjekter"]).map(
-                  (item) => (
-                    <Chip
-                      key={item}
-                      className="border-white/10 bg-white/5 text-white"
-                      radius="sm"
-                      size="sm"
-                      variant="flat"
-                    >
-                      {item}
-                    </Chip>
-                  )
-                )}
+                {projectChips.map((item) => (
+                  <Chip
+                    key={item}
+                    className="border border-slate-200 bg-slate-50 text-slate-700"
+                    radius="sm"
+                    size="sm"
+                    variant="flat"
+                  >
+                    {item}
+                  </Chip>
+                ))}
               </div>
             </CardBody>
           </Card>
@@ -659,7 +928,7 @@ function CoursePage({ course }) {
             {biProjectShowcase.sections.map((section) => (
               <Card
                 key={section.title}
-                className="border border-white/10 bg-white/10"
+                className="border border-slate-200 bg-white/95 shadow-sm"
               >
                 <CardBody className="gap-4 p-6">
                   <p className="portfolio-kicker">{section.title}</p>
@@ -688,15 +957,15 @@ function CoursePage({ course }) {
               <h2>Kode og artefakter</h2>
             </div>
 
-            <Card className="border border-white/10 bg-slate-950/50">
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
               <CardBody className="p-6">
                 <Tabs
                   aria-label="BI project code samples"
                   classNames={{
                     tabList:
-                      "w-full justify-start gap-2 rounded-2xl border border-white/10 bg-white/5 p-2",
-                    cursor: "bg-white",
-                    tab: "max-w-fit px-4 h-11 text-sm text-white/70 data-[selected=true]:text-slate-950",
+                      "w-full justify-start gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-2",
+                    cursor: "bg-white shadow-sm",
+                    tab: "max-w-fit px-4 h-11 text-sm text-slate-600 data-[selected=true]:text-slate-950",
                     panel: "px-0 pt-6",
                   }}
                   radius="full"
@@ -749,7 +1018,7 @@ function CoursePage({ course }) {
             </div>
 
             <div className="analytics-gallery">
-              <Card className="border border-white/10 bg-white/10">
+              <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-5">
                   <div>
                     <p className="portfolio-kicker">descriptive_analytics_sales.png</p>
@@ -768,7 +1037,7 @@ function CoursePage({ course }) {
                 </CardBody>
               </Card>
 
-              <Card className="border border-white/10 bg-slate-950/50">
+              <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-5">
                   <div>
                     <p className="portfolio-kicker">predictive_model_next_month.png</p>
@@ -797,7 +1066,7 @@ function CoursePage({ course }) {
 
             <div className="dashboard-gallery">
               {biDashboardPages.map((page) => (
-                <Card key={page.title} className="border border-white/10 bg-white/10">
+                <Card key={page.title} className="border border-slate-200 bg-white/95 shadow-sm">
                   <CardBody className="gap-4 p-4">
                     <div>
                       <p className="portfolio-kicker">{page.title}</p>
@@ -818,7 +1087,7 @@ function CoursePage({ course }) {
             </div>
 
             <div className="bi-assets-grid">
-              <Card className="border border-white/10 bg-white/10">
+              <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-6">
                   <p className="portfolio-kicker">Datasett</p>
                   <h3>CSV-filer brukt i ETL-flyten</h3>
@@ -833,7 +1102,7 @@ function CoursePage({ course }) {
                 </CardBody>
               </Card>
 
-              <Card className="border border-white/10 bg-slate-950/50">
+              <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-6">
                   <p className="portfolio-kicker">Business insights</p>
                   <h3>Funn skrevet ut fra analysen</h3>
@@ -848,7 +1117,7 @@ function CoursePage({ course }) {
                 </CardBody>
               </Card>
 
-              <Card className="border border-white/10 bg-white/10">
+              <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-6">
                   <p className="portfolio-kicker">Dokumentasjon</p>
                   <h3>Rapport, ERD og dashboard</h3>
@@ -878,7 +1147,7 @@ function CoursePage({ course }) {
 
             <div className="pdf-grid">
               {biPdfFiles.map((pdf) => (
-                <Card key={pdf.fileName} className="border border-white/10 bg-white/10">
+                <Card key={pdf.fileName} className="border border-slate-200 bg-white/95 shadow-sm">
                   <CardBody className="gap-4 p-5">
                     <div className="pdf-preview__content">
                       <p className="portfolio-kicker">{pdf.fileName}</p>
@@ -901,6 +1170,318 @@ function CoursePage({ course }) {
                 </Card>
               ))}
             </div>
+          </section>
+        </>
+      ) : null}
+
+      {isGolfStoreCourse ? (
+        <>
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="golfstore-hero-card">
+              <div className="golfstore-hero-card__media">
+                <img alt="GolfStore landing page" src={golfStoreHeroImage} />
+              </div>
+
+              <div className="golfstore-hero-card__body">
+                <p className="portfolio-kicker">Fullstack case</p>
+                <h2>En nettbutikk bygget som et komplett system</h2>
+                <p>
+                  GolfStore presenteres best som et dokumentert fullstack-prosjekt:
+                  frontend, API, database og autentisering satt sammen i en helhetlig
+                  applikasjon.
+                </p>
+
+                <div className="golfstore-highlight-grid">
+                  {golfStorePresentation.highlights.map((item) => (
+                    <div key={item.label} className="golfstore-highlight">
+                      <strong>{item.value}</strong>
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Prosjektoversikt</p>
+              <h2>{golfStorePresentation.title}</h2>
+              <p>{golfStorePresentation.intro}</p>
+            </div>
+
+            <div className="project-detail-grid">
+              {golfStoreProjectShowcase.sections.map((section) => (
+                <Card
+                  key={section.title}
+                  className="border border-slate-200 bg-white/95 shadow-sm"
+                >
+                  <CardBody className="gap-4 p-6">
+                    <p className="portfolio-kicker">{section.title}</p>
+                    <h3>{section.title}</h3>
+                    <p>{section.description}</p>
+                    <div className="bi-file-list">
+                      {section.items.map((item) => (
+                        <div key={item} className="bi-file-list__item">
+                          <span className="portfolio-strength__dot" />
+                          <p>{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Visuell demo</p>
+              <h2>Hvordan prosjektet presenteres</h2>
+              <p>
+                Siden prosjektet ikke er permanent deployet, er skjermbilder og
+                dokumentert flyt den beste måten å vise løsningen på i portfolien.
+              </p>
+            </div>
+
+            <div className="golfstore-gallery">
+              {golfStorePresentation.gallery.map((item) => (
+                <Card key={item.title} className="border border-slate-200 bg-white/95 shadow-sm">
+                  <CardBody className="gap-4 p-5">
+                    <div className="analytics-gallery__image golfstore-gallery__image">
+                      <img alt={item.title} src={item.src} />
+                    </div>
+                    <div>
+                      <p className="portfolio-kicker">{item.title}</p>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Min rolle</p>
+              <h2>Hva jeg faktisk jobbet med</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6 md:p-8">
+                <div className="bi-file-list">
+                  {golfStorePresentation.rolePoints.map((item) => (
+                    <div key={item} className="bi-file-list__item">
+                      <span className="portfolio-strength__dot" />
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Brukerflyt</p>
+              <h2>Hva løsningen demonstrerer</h2>
+            </div>
+
+            <div className="project-detail-grid">
+              {golfStorePresentation.userFlows.map((flow) => (
+                <Card key={flow.title} className="border border-slate-200 bg-white/95 shadow-sm">
+                  <CardBody className="gap-4 p-6">
+                    <p className="portfolio-kicker">{flow.title}</p>
+                    <h3>{flow.title}</h3>
+                    <p>{flow.description}</p>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Repositorier</p>
+              <h2>Frontend og backend</h2>
+            </div>
+
+            <div className="project-detail-grid">
+              {golfStoreRepoLinks.map((repo) => (
+                <Card key={repo.href} className="border border-slate-200 bg-white/95 shadow-sm">
+                  <CardBody className="gap-4 p-6">
+                    <p className="portfolio-kicker">{repo.title}</p>
+                    <h3>{repo.title}</h3>
+                    <p>{repo.description}</p>
+                    <Button
+                      as={Link}
+                      className="w-fit bg-white font-semibold text-slate-950"
+                      href={repo.href}
+                      radius="sm"
+                      target="_blank"
+                    >
+                      Åpne repository
+                    </Button>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Arkitektur</p>
+              <h2>Teknisk oppbygning</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6 md:p-8">
+                <div className="bi-file-list">
+                  {golfStoreArchitecture.map((item) => (
+                    <div key={item} className="bi-file-list__item">
+                      <span className="portfolio-strength__dot" />
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Lokal demo</p>
+              <h2>Hvordan prosjektet kan startes</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-5 p-6 md:p-8">
+                <div className="bi-file-list">
+                  {golfStorePresentation.runSteps.map((item) => (
+                    <div key={item} className="bi-file-list__item">
+                      <span className="portfolio-strength__dot" />
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
+          </section>
+        </>
+      ) : null}
+
+      {isAiCourse ? (
+        <>
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">AI case</p>
+              <h2>{garbageMlmProject.title}</h2>
+              <p>{garbageMlmProject.intro}</p>
+            </div>
+
+            <div className="project-detail-grid">
+              {garbageMlmProject.sections.map((section) => (
+                <Card key={section.title} className="border border-slate-200 bg-white/95 shadow-sm">
+                  <CardBody className="gap-4 p-6">
+                    <p className="portfolio-kicker">{section.title}</p>
+                    <h3>{section.title}</h3>
+                    <p>{section.description}</p>
+                    <div className="bi-file-list">
+                      {section.items.map((item) => (
+                        <div key={item} className="bi-file-list__item">
+                          <span className="portfolio-strength__dot" />
+                          <p>{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Hva prosjektet viser</p>
+              <h2>Praktisk anvendt maskinlæring</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6 md:p-8">
+                <div className="bi-file-list">
+                  {garbageMlmHighlights.map((item) => (
+                    <div key={item} className="bi-file-list__item">
+                      <span className="portfolio-strength__dot" />
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Demo</p>
+              <h2>Gradio-grensesnitt</h2>
+              <p>
+                Dette skjermbildet er tatt fra den lokale demoappen som laster den
+                ferdigtrente modellen og lar brukeren laste opp et bilde for klassifisering.
+              </p>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-5">
+                <div className="analytics-gallery__image">
+                  <img alt="GarbageMLM Gradio demo" src={garbageMlmDemoImage} />
+                </div>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Repository</p>
+              <h2>Kode og demo</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6">
+                <p className="portfolio-kicker">{garbageMlmRepo.title}</p>
+                <h3>{garbageMlmRepo.title}</h3>
+                <p>{garbageMlmRepo.description}</p>
+                <Button
+                  as={Link}
+                  className="w-fit bg-white font-semibold text-slate-950"
+                  href={garbageMlmRepo.href}
+                  radius="sm"
+                  target="_blank"
+                >
+                  Åpne repository
+                </Button>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
+              <p className="portfolio-kicker">Lokal kjøring</p>
+              <h2>Hvordan demoen startes</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6 md:p-8">
+                <div className="bi-file-list">
+                  {garbageMlmRunSteps.map((item) => (
+                    <div key={item} className="bi-file-list__item">
+                      <span className="portfolio-strength__dot" />
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
           </section>
         </>
       ) : null}

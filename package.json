@@ -2,6 +2,7 @@
   "name": "larsportfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://larnor96.github.io/portfolio",
   "dependencies": {
     "@heroui/react": "^2.6.11",
     "@testing-library/dom": "^10.4.1",

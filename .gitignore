@@ -28,3 +28,18 @@ hehe.txt
 # large course project artifacts
 GroupAABLM_BID3000_2025/ETL/Dataset/
 GroupAABLM_BID3000_2025/Dashboard/*.pbix
+GroupAABLM_BID3000_2025/Dashboard/*.png
+
+# local cloned project repositories
+/golfstore/
+/GolfStoreBackend/
+/GarbageMLM/
+
+# local screenshots and temp files
+/AIBilde.png
+/BIDheaderbilde.png
+/portfolio-dev.log
+/portfolio-dev.err
+
+# local backup artifacts
+/src/assets/bi/BID3000_FINAL_REPORT.with-cover-backup.pdf
