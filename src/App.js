@@ -860,10 +860,6 @@ function HomePage() {
 }
 
 function ProjectsPage() {
-  const featuredProjects = courses.filter((course) =>
-    featuredProjectIds.includes(course.id)
-  );
-
   return (
     <>
       <section className="portfolio-section portfolio-section--tight">
@@ -882,18 +878,24 @@ function ProjectsPage() {
           <p className="portfolio-kicker">Prosjekter</p>
           <h1 className="course-page-title">Prosjekter jeg har jobbet med</h1>
           <p>
-            Her er en samlet oversikt over prosjekter fra studiet og egne
-            utviklingsoppgaver. Trykk på et prosjekt for mer detaljer.
+            Her samler jeg egne prosjekter og mindre utviklingsoppgaver som ikke
+            hører direkte til skoleprosjektene.
           </p>
         </div>
       </section>
 
       <section className="portfolio-section portfolio-section--tight">
-        <div className="course-grid">
-          {featuredProjects.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+        <Card className="border border-slate-200 bg-white/95 shadow-sm">
+          <CardBody className="gap-4 p-6 md:p-8">
+            <p className="portfolio-kicker">Egne prosjekter</p>
+            <h2>Flere prosjekter kommer her</h2>
+            <p>
+              Skoleprosjektene ligger fortsatt på forsiden under
+              Skoleprosjekter. Denne siden er satt av til egne prosjekter,
+              småverktøy og andre ting jeg har jobbet med utenom fagene.
+            </p>
+          </CardBody>
+        </Card>
       </section>
     </>
   );
