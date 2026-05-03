@@ -738,6 +738,10 @@ function getRouteFromHash() {
     return { page: "home", courseId: null };
   }
 
+  if (hash === "/prosjekter") {
+    return { page: "projects", courseId: null };
+  }
+
   const match = hash.match(/^\/course\/(.+)$/);
 
   if (match) {
@@ -749,6 +753,10 @@ function getRouteFromHash() {
 
 function navigateToCourse(courseId) {
   window.location.hash = `/course/${courseId}`;
+}
+
+function navigateToProjects() {
+  window.location.hash = "/prosjekter";
 }
 
 function navigateHome() {
@@ -813,13 +821,22 @@ function HomePage() {
             </p>
             <div className="portfolio-hero__actions">
               <Button
-                as={Link}
                 className="bg-white font-semibold text-slate-950"
-                href="#subjects"
+                onPress={navigateToProjects}
                 radius="sm"
                 size="lg"
               >
-                Se prosjekter
+                Prosjekter
+              </Button>
+              <Button
+                as={Link}
+                className="border border-slate-200 bg-white/80 font-semibold text-slate-800"
+                href="#subjects"
+                radius="sm"
+                size="lg"
+                variant="bordered"
+              >
+                Skoleprosjekter
               </Button>
             </div>
           </div>
@@ -828,9 +845,50 @@ function HomePage() {
 
       <section className="portfolio-section" id="subjects">
         <div className="portfolio-section__intro">
-          <p className="portfolio-kicker">Prosjekter</p>
+          <p className="portfolio-kicker">Skoleprosjekter</p>
+          <h2>Prosjekter fra studiet</h2>
         </div>
 
+        <div className="course-grid">
+          {featuredProjects.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ProjectsPage() {
+  const featuredProjects = courses.filter((course) =>
+    featuredProjectIds.includes(course.id)
+  );
+
+  return (
+    <>
+      <section className="portfolio-section portfolio-section--tight">
+        <div className="course-page-back">
+          <Button
+            className="border border-slate-200 bg-white text-slate-800 shadow-sm"
+            onPress={navigateHome}
+            radius="sm"
+            variant="bordered"
+          >
+            Tilbake til forsiden
+          </Button>
+        </div>
+
+        <div className="portfolio-section__intro">
+          <p className="portfolio-kicker">Prosjekter</p>
+          <h1 className="course-page-title">Prosjekter jeg har jobbet med</h1>
+          <p>
+            Her er en samlet oversikt over prosjekter fra studiet og egne
+            utviklingsoppgaver. Trykk på et prosjekt for mer detaljer.
+          </p>
+        </div>
+      </section>
+
+      <section className="portfolio-section portfolio-section--tight">
         <div className="course-grid">
           {featuredProjects.map((course) => (
             <CourseCard key={course.id} course={course} />
@@ -1530,7 +1588,9 @@ function App() {
 
   return (
     <main className="portfolio-shell">
-      {route.page === "course" ? (
+      {route.page === "projects" ? (
+        <ProjectsPage />
+      ) : route.page === "course" ? (
         selectedCourse ? (
           <CoursePage course={selectedCourse} />
         ) : (
