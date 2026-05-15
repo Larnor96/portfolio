@@ -731,29 +731,6 @@ const featuredCardMedia = {
   },
 };
 
-const personalProjects = [
-  {
-    id: "local-todo",
-    title: "Local Todo",
-    subtitle: "Offline todo-app for Windows",
-    description:
-      "En lokal todo-liste laget som desktop-app med React og Next.js inni Electron. Appen lar brukeren legge til, fullføre, filtrere og slette oppgaver, og lagrer data lokalt på PC-en.",
-    repo: "https://github.com/Larnor96/To-do-list",
-    technologies: ["React", "Next.js", "Electron", "Node.js", "Tailwind CSS"],
-    features: [
-      "Kjører som egen desktop-app på Windows",
-      "Lagrer oppgaver lokalt i JSON under %APPDATA%",
-      "Støtter aktive/fullførte oppgaver, filtrering og sletting",
-      "Kan settes opp med snarvei og valgfri oppstart med Windows",
-    ],
-    runSteps: [
-      "Gå til `frontend`-mappen i prosjektet.",
-      "Installer avhengigheter med `npm.cmd install`.",
-      "Start desktopappen med `npm.cmd run desktop`.",
-    ],
-  },
-];
-
 function getRouteFromHash() {
   const hash = window.location.hash.replace(/^#/, "");
 
@@ -907,101 +884,6 @@ function ProjectsPage() {
         </div>
       </section>
 
-      <section className="portfolio-section portfolio-section--tight">
-        <div className="personal-project-list">
-          {personalProjects.map((project) => (
-            <Card
-              key={project.id}
-              className="border border-slate-200 bg-white/95 shadow-sm"
-            >
-              <CardBody className="gap-6 p-6 md:p-8">
-                <div className="personal-project-card">
-                  <div className="todo-preview" aria-hidden="true">
-                    <div className="todo-preview__header">
-                      <span>Local Todo</span>
-                      <strong>Today&apos;s tasks</strong>
-                    </div>
-                    <div className="todo-preview__progress">
-                      <span>Progress</span>
-                      <strong>67%</strong>
-                      <div>
-                        <span />
-                      </div>
-                    </div>
-                    <div className="todo-preview__input">Add a task</div>
-                    <div className="todo-preview__filters">
-                      <span>All</span>
-                      <span>Open</span>
-                      <span>Done</span>
-                    </div>
-                    <div className="todo-preview__tasks">
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                  </div>
-
-                  <div className="personal-project-card__content">
-                    <p className="portfolio-kicker">{project.subtitle}</p>
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-
-                    <div className="portfolio-card__chips">
-                      {project.technologies.map((item) => (
-                        <Chip
-                          key={item}
-                          className="border border-slate-200 bg-slate-50 text-slate-700"
-                          radius="sm"
-                          size="sm"
-                          variant="flat"
-                        >
-                          {item}
-                        </Chip>
-                      ))}
-                    </div>
-
-                    <div className="project-detail-grid">
-                      <div>
-                        <p className="portfolio-kicker">Funksjoner</p>
-                        <div className="bi-file-list">
-                          {project.features.map((item) => (
-                            <div key={item} className="bi-file-list__item">
-                              <span className="portfolio-strength__dot" />
-                              <p>{item}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="portfolio-kicker">Lokal kjøring</p>
-                        <div className="bi-file-list">
-                          {project.runSteps.map((item) => (
-                            <div key={item} className="bi-file-list__item">
-                              <span className="portfolio-strength__dot" />
-                              <p>{item}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <Button
-                      as={Link}
-                      className="w-fit bg-white font-semibold text-slate-950"
-                      href={project.repo}
-                      radius="sm"
-                      target="_blank"
-                    >
-                      Åpne repository
-                    </Button>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
-          ))}
-        </div>
-      </section>
     </>
   );
 }
