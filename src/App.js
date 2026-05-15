@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
-import heroHeaderImage from "./assets/portfolioHeader.png";
 import descriptiveAnalyticsImage from "./assets/bi/descriptive_analytics_sales.png";
 import predictiveAnalyticsImage from "./assets/bi/predictive_model_next_month.png";
 import biHeaderImage from "./assets/BIDheaderbilde.png";
@@ -808,10 +807,6 @@ function HomePage() {
               Project portfolio
             </Chip>
             <h1>Velkommen til min portfolio</h1>
-          </div>
-
-          <div className="portfolio-hero__media">
-            <img alt="Portfolio header" src={heroHeaderImage} />
           </div>
 
           <div className="portfolio-hero__footer">
