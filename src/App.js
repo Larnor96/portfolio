@@ -242,7 +242,7 @@ const courses = [
   },
   {
     id: "business-intelligence-og-datavarehus",
-    title: "Business Intelligence og datavarehus (USN)",
+    title: "Business Intelligence og datavarehus",
     tag: "BI",
     semester: "Analysefordypning",
     summary:
@@ -255,7 +255,7 @@ const courses = [
   },
   {
     id: "artificial-intelligence-for-business-applications",
-    title: "Artificial Intelligence for Business Applications (USN)",
+    title: "Artificial Intelligence for Business Applications",
     tag: "AI",
     semester: "Anvendt intelligens",
     summary:
@@ -268,7 +268,7 @@ const courses = [
   },
   {
     id: "applikasjonsutvikling-for-mobile-enheter",
-    title: "Applikasjonsutvikling for mobile enheter (USN)",
+    title: "Applikasjonsutvikling for mobile enheter",
     tag: "Mobile",
     semester: "Mobil utvikling",
     summary:
@@ -281,7 +281,7 @@ const courses = [
   },
   {
     id: "iot-teknologi-og-mikrokontrollere",
-    title: "IoT-teknologi og Mikrokontrollere i Smarte Systemer (USN)",
+    title: "IoT-teknologi og Mikrokontrollere i Smarte Systemer",
     tag: "IoT",
     semester: "Innebygde systemer",
     summary:
@@ -909,12 +909,12 @@ function CoursePage({ course }) {
         </div>
 
         <div className="portfolio-section__intro">
-          <p className="portfolio-kicker">Prosjekt</p>
+          {!isAiCourse ? <p className="portfolio-kicker">Prosjekt</p> : null}
           <h1 className="course-page-title">{course.title}</h1>
           {!isBiCourse ? <p>{course.summary}</p> : null}
         </div>
 
-        {!isBiCourse ? <div className="subject-layout">
+        {!isBiCourse && !isAiCourse ? <div className="subject-layout">
           <Card className="border border-slate-200 bg-white/95 shadow-sm">
             <CardBody className="gap-6 p-6 md:p-8">
               <div className="subject-detail__header">
@@ -1254,7 +1254,36 @@ function CoursePage({ course }) {
         <>
           <section className="portfolio-section portfolio-section--divided">
             <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">AI case</p>
+              <h2>Gradio-grensesnitt</h2>
+            </div>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-5">
+                <div className="analytics-gallery__image">
+                  <img alt="GarbageMLM Gradio demo" src={garbageMlmDemoImage} />
+                </div>
+              </CardBody>
+            </Card>
+
+            <Card className="border border-slate-200 bg-white/95 shadow-sm">
+              <CardBody className="gap-4 p-6">
+                <h3>{garbageMlmRepo.title}</h3>
+                <p>{garbageMlmRepo.description}</p>
+                <Button
+                  as={Link}
+                  className="w-fit bg-white font-semibold text-slate-950"
+                  href={garbageMlmRepo.href}
+                  radius="sm"
+                  target="_blank"
+                >
+                  Åpne repository
+                </Button>
+              </CardBody>
+            </Card>
+          </section>
+
+          <section className="portfolio-section portfolio-section--divided">
+            <div className="portfolio-section__intro portfolio-section__intro--framed">
               <h2>{garbageMlmProject.title}</h2>
               <p>{garbageMlmProject.intro}</p>
             </div>
@@ -1263,7 +1292,6 @@ function CoursePage({ course }) {
               {garbageMlmProject.sections.map((section) => (
                 <Card key={section.title} className="border border-slate-200 bg-white/95 shadow-sm">
                   <CardBody className="gap-4 p-6">
-                    <p className="portfolio-kicker">{section.title}</p>
                     <h3>{section.title}</h3>
                     <p>{section.description}</p>
                     <div className="bi-file-list">
@@ -1282,7 +1310,6 @@ function CoursePage({ course }) {
 
           <section className="portfolio-section portfolio-section--divided">
             <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Hva prosjektet viser</p>
               <h2>Praktisk anvendt maskinlæring</h2>
             </div>
 
@@ -1302,50 +1329,6 @@ function CoursePage({ course }) {
 
           <section className="portfolio-section portfolio-section--divided">
             <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Demo</p>
-              <h2>Gradio-grensesnitt</h2>
-              <p>
-                Dette skjermbildet er tatt fra den lokale demoappen som laster den
-                ferdigtrente modellen og lar brukeren laste opp et bilde for klassifisering.
-              </p>
-            </div>
-
-            <Card className="border border-slate-200 bg-white/95 shadow-sm">
-              <CardBody className="gap-4 p-5">
-                <div className="analytics-gallery__image">
-                  <img alt="GarbageMLM Gradio demo" src={garbageMlmDemoImage} />
-                </div>
-              </CardBody>
-            </Card>
-          </section>
-
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Repository</p>
-              <h2>Kode og demo</h2>
-            </div>
-
-            <Card className="border border-slate-200 bg-white/95 shadow-sm">
-              <CardBody className="gap-4 p-6">
-                <p className="portfolio-kicker">{garbageMlmRepo.title}</p>
-                <h3>{garbageMlmRepo.title}</h3>
-                <p>{garbageMlmRepo.description}</p>
-                <Button
-                  as={Link}
-                  className="w-fit bg-white font-semibold text-slate-950"
-                  href={garbageMlmRepo.href}
-                  radius="sm"
-                  target="_blank"
-                >
-                  Åpne repository
-                </Button>
-              </CardBody>
-            </Card>
-          </section>
-
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Lokal kjøring</p>
               <h2>Hvordan demoen startes</h2>
             </div>
 
