@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import descriptiveAnalyticsImage from "./assets/bi/descriptive_analytics_sales.png";
 import predictiveAnalyticsImage from "./assets/bi/predictive_model_next_month.png";
-import biHeaderImage from "./assets/BIDheaderbilde.png";
 import finalReportPdf from "./assets/bi/BID3000_FINAL_REPORT.pdf";
 import erdPdf from "./assets/bi/ERD.pdf";
 import dashboardDocumentationPdf from "./assets/bi/Dashboard_Documentation.pdf";
@@ -17,7 +16,7 @@ import aiCardImage from "./assets/AIBilde.png";
 import golfStoreHeroImage from "./assets/golfstore/homepage.png";
 import golfStoreLogoImage from "./assets/golfstore/kollegutta.png";
 import garbageMlmDemoImage from "./assets/garbagemlm-demo.png";
-import { Button, Card, CardBody, Chip, Link, Tab, Tabs } from "@heroui/react";
+import { Button, Card, CardBody, Chip, Link } from "@heroui/react";
 
 const courses = [
   {
@@ -491,6 +490,8 @@ const garbageMlmRepo = {
     "Repoet viser både treningsløpet og den kjørbare demoappen for avfallsklassifisering.",
 };
 
+// Beholdes som grunnlag dersom en mer detaljert BI-visning skal gjeninnføres.
+// eslint-disable-next-line no-unused-vars
 const biProjectShowcase = {
   title: "GroupAABLM_BID3000_2025",
   intro:
@@ -540,6 +541,7 @@ const biProjectShowcase = {
   ],
 };
 
+// eslint-disable-next-line no-unused-vars
 const biDatasetFiles = [
   "olist_customers_dataset.csv",
   "olist_geolocation_dataset.csv",
@@ -552,6 +554,7 @@ const biDatasetFiles = [
   "product_category_name_translation.csv",
 ];
 
+// eslint-disable-next-line no-unused-vars
 const biCodeSamples = {
   python: `def connect_to_warehouse():
     DB_CONFIG = {
@@ -652,6 +655,7 @@ LIMIT 10;`,
 </step>`,
 };
 
+// eslint-disable-next-line no-unused-vars
 const biInsights = [
   "Total Revenue: R$ 15,843,553.24 across 24 months",
   "Best Category: 'beleza_saude' accounts for 9.1% of revenue",
@@ -907,16 +911,10 @@ function CoursePage({ course }) {
         <div className="portfolio-section__intro">
           <p className="portfolio-kicker">Prosjekt</p>
           <h1 className="course-page-title">{course.title}</h1>
-          <p>{course.summary}</p>
+          {!isBiCourse ? <p>{course.summary}</p> : null}
         </div>
 
-        {isBiCourse ? (
-          <div className="course-page-header-media">
-            <img alt="Business Intelligence project header" src={biHeaderImage} />
-          </div>
-        ) : null}
-
-        <div className="subject-layout">
+        {!isBiCourse ? <div className="subject-layout">
           <Card className="border border-slate-200 bg-white/95 shadow-sm">
             <CardBody className="gap-6 p-6 md:p-8">
               <div className="subject-detail__header">
@@ -956,103 +954,11 @@ function CoursePage({ course }) {
               </div>
             </CardBody>
           </Card>
-        </div>
+        </div> : null}
       </section>
 
       {isBiCourse ? (
-        <section className="portfolio-section portfolio-section--divided">
-          <div className="portfolio-section__intro portfolio-section__intro--framed">
-            <p className="portfolio-kicker">Prosjektmappe</p>
-            <h2>{biProjectShowcase.title}</h2>
-          </div>
-
-          <div className="bi-folder-grid">
-            {biProjectShowcase.sections.map((section) => (
-              <Card
-                key={section.title}
-                className="border border-slate-200 bg-white/95 shadow-sm"
-              >
-                <CardBody className="gap-4 p-6">
-                  <p className="portfolio-kicker">{section.title}</p>
-                  <h3>{section.title}</h3>
-                  <p>{section.description}</p>
-                  <div className="bi-file-list">
-                    {section.items.map((item) => (
-                      <div key={item} className="bi-file-list__item">
-                        <span className="portfolio-strength__dot" />
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      {isBiCourse ? (
         <>
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Kode og artefakter</p>
-              <h2>Kode og artefakter</h2>
-            </div>
-
-            <Card className="border border-slate-200 bg-white/95 shadow-sm">
-              <CardBody className="p-6">
-                <Tabs
-                  aria-label="BI project code samples"
-                  classNames={{
-                    tabList:
-                      "w-full justify-start gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-2",
-                    cursor: "bg-white shadow-sm",
-                    tab: "max-w-fit px-4 h-11 text-sm text-slate-600 data-[selected=true]:text-slate-950",
-                    panel: "px-0 pt-6",
-                  }}
-                  radius="full"
-                >
-                  <Tab key="python" title="Python">
-                    <div className="code-preview">
-                      <div className="code-preview__meta">
-                        <span>python_analytic_integration.py</span>
-                        <span>Forecasting, extraction, analytics</span>
-                      </div>
-                      <pre className="code-block"><code>{biCodeSamples.python}</code></pre>
-                    </div>
-                  </Tab>
-                  <Tab key="sql-schema" title="SQL schema">
-                    <div className="code-preview">
-                      <div className="code-preview__meta">
-                        <span>Schema_creation.sql</span>
-                        <span>Warehouse modeling</span>
-                      </div>
-                      <pre className="code-block"><code>{biCodeSamples.sql}</code></pre>
-                    </div>
-                  </Tab>
-                  <Tab key="sql-query" title="SQL query">
-                    <div className="code-preview">
-                      <div className="code-preview__meta">
-                        <span>queries.sql</span>
-                        <span>Revenue ranking query</span>
-                      </div>
-                      <pre className="code-block"><code>{biCodeSamples.query}</code></pre>
-                    </div>
-                  </Tab>
-                  <Tab key="etl" title="ETL flow">
-                    <div className="code-preview">
-                      <div className="code-preview__meta">
-                        <span>fact_order_items.ktr</span>
-                        <span>Pentaho transformation</span>
-                      </div>
-                      <pre className="code-block"><code>{biCodeSamples.etl}</code></pre>
-                    </div>
-                  </Tab>
-                </Tabs>
-              </CardBody>
-            </Card>
-          </section>
-
           <section className="portfolio-section portfolio-section--divided">
             <div className="portfolio-section__intro portfolio-section__intro--framed">
               <p className="portfolio-kicker">Analyseoutput</p>
@@ -1063,12 +969,7 @@ function CoursePage({ course }) {
               <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-5">
                   <div>
-                    <p className="portfolio-kicker">descriptive_analytics_sales.png</p>
                     <h3>Descriptive analytics</h3>
-                    <p>
-                      Viser salgstrend, distribusjon, toppkategorier og toppstater
-                      basert på data hentet fra datavarehuset.
-                    </p>
                   </div>
                   <div className="analytics-gallery__image">
                     <img
@@ -1082,12 +983,7 @@ function CoursePage({ course }) {
               <Card className="border border-slate-200 bg-white/95 shadow-sm">
                 <CardBody className="gap-4 p-5">
                   <div>
-                    <p className="portfolio-kicker">predictive_model_next_month.png</p>
                     <h3>Predictive analytics</h3>
-                    <p>
-                      Visualiserer modellens testresultater og hvordan neste
-                      måneds salg ble forecastet med Gradient Boosting.
-                    </p>
                   </div>
                   <div className="analytics-gallery__image">
                     <img
@@ -1119,65 +1015,6 @@ function CoursePage({ course }) {
                   </CardBody>
                 </Card>
               ))}
-            </div>
-          </section>
-
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Datasett og leveranser</p>
-              <h2>Rådata, dokumentasjon og prosjektfiler.</h2>
-            </div>
-
-            <div className="bi-assets-grid">
-              <Card className="border border-slate-200 bg-white/95 shadow-sm">
-                <CardBody className="gap-4 p-6">
-                  <p className="portfolio-kicker">Datasett</p>
-                  <h3>CSV-filer brukt i ETL-flyten</h3>
-                  <div className="bi-file-list">
-                    {biDatasetFiles.map((item) => (
-                      <div key={item} className="bi-file-list__item">
-                        <span className="portfolio-strength__dot" />
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardBody>
-              </Card>
-
-              <Card className="border border-slate-200 bg-white/95 shadow-sm">
-                <CardBody className="gap-4 p-6">
-                  <p className="portfolio-kicker">Business insights</p>
-                  <h3>Funn skrevet ut fra analysen</h3>
-                  <div className="bi-file-list">
-                    {biInsights.map((item) => (
-                      <div key={item} className="bi-file-list__item">
-                        <span className="portfolio-strength__dot" />
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardBody>
-              </Card>
-
-              <Card className="border border-slate-200 bg-white/95 shadow-sm">
-                <CardBody className="gap-4 p-6">
-                  <p className="portfolio-kicker">Dokumentasjon</p>
-                  <h3>Rapport, ERD og dashboard</h3>
-                  <div className="bi-file-list">
-                    {[
-                      "BID3000_FINAL_REPORT.pdf",
-                      "ERD.pdf",
-                      "Dashboard Documentation.pdf",
-                      "PowerBI Dashboard.pbix",
-                    ].map((item) => (
-                      <div key={item} className="bi-file-list__item">
-                        <span className="portfolio-strength__dot" />
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardBody>
-              </Card>
             </div>
           </section>
 
