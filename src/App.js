@@ -259,7 +259,7 @@ const courses = [
     tag: "AI",
     semester: "Anvendt intelligens",
     summary:
-      "Fokuserte på bruk av AI i forretningssammenheng, fra prediksjon og automatisering til beslutningsstøtte.",
+      "En AI-løsning som klassifiserer bilder i fem avfallskategorier gjennom et enkelt Gradio-grensesnitt.",
     focus: [
       "AI i forretningskontekst",
       "Prediksjon og beslutningsstøtte",
