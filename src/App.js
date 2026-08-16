@@ -351,23 +351,6 @@ const golfStoreProjectShowcase = {
         "Spring Boot-applikasjon med REST-endepunkter, PostgreSQL, JWT-beskyttelse, Docker Compose og Swagger/OpenAPI.",
       items: ["Java 17", "Spring Boot 3", "Spring Security", "PostgreSQL", "Docker Compose"],
     },
-    {
-      title: "Mine bidrag",
-      description:
-        "Jeg jobbet med frontend, deler av backend og tok ledelsen på søkefunksjonalitet og integrasjon mellom klient og API.",
-      items: [
-        "UI-komponenter og featureutvikling",
-        "API-kobling mellom frontend og backend",
-        "Autentisering og brukerflyt med Keycloak",
-        "Søkefunksjonalitet og backend search-endepunkter",
-      ],
-    },
-    {
-      title: "Lokal kjøring",
-      description:
-        "Backend startes med Docker Compose og frontend kjøres som egen Next.js-app med miljøvariabler mot lokal API og Keycloak.",
-      items: ["Backend: localhost:8080", "Frontend: localhost:3000", "Keycloak: localhost:8180", "Swagger UI tilgjengelig på backend"],
-    },
   ],
 };
 
@@ -411,14 +394,8 @@ const golfStorePresentation = {
       title: "Logo og merkevare",
       src: golfStoreLogoImage,
       description:
-        "Prosjektet fikk en egen visuell identitet med Kolleggutta Golf Butikken som merkevare i frontend-opplevelsen.",
+        "Prosjektet fikk en egen visuell identitet med Køllegutta Golfbutikken som merkevare i frontend-opplevelsen.",
     },
-  ],
-  rolePoints: [
-    "Utviklet UI-komponenter og flyt i frontend med Next.js og React",
-    "Koblet frontend mot Spring Boot-endepunkter for produkter og brukerfunksjoner",
-    "Arbeidet med autentisering og sesjonshåndtering via Keycloak",
-    "Tok ledelsen på søkefunksjonalitet og integrasjonen mot backend-søk",
   ],
   userFlows: [
     {
@@ -436,11 +413,6 @@ const golfStorePresentation = {
       description:
         "Beskyttede brukerfunksjoner bruker Keycloak og tokenbasert tilgang til shopping cart og brukerdata.",
     },
-  ],
-  runSteps: [
-    "Start backendstakken med `docker-compose up --build -d` i `GolfStoreBackend`.",
-    "Start frontenden med `npm install` og `npm run dev -- --port 3001` i `golfstore`.",
-    "Bruk `http://localhost:3001` for frontend, `http://localhost:8080` for API og `http://localhost:8180` for Keycloak.",
   ],
 };
 
@@ -1115,12 +1087,7 @@ function CoursePage({ course }) {
 
           <section className="portfolio-section portfolio-section--divided">
             <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Visuell demo</p>
-              <h2>Hvordan prosjektet presenteres</h2>
-              <p>
-                Siden prosjektet ikke er permanent deployet, er skjermbilder og
-                dokumentert flyt den beste måten å vise løsningen på i portfolien.
-              </p>
+              <h2>Visuell demo</h2>
             </div>
 
             <div className="golfstore-gallery">
@@ -1139,26 +1106,6 @@ function CoursePage({ course }) {
                 </Card>
               ))}
             </div>
-          </section>
-
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Min rolle</p>
-              <h2>Hva jeg faktisk jobbet med</h2>
-            </div>
-
-            <Card className="border border-slate-200 bg-white/95 shadow-sm">
-              <CardBody className="gap-4 p-6 md:p-8">
-                <div className="bi-file-list">
-                  {golfStorePresentation.rolePoints.map((item) => (
-                    <div key={item} className="bi-file-list__item">
-                      <span className="portfolio-strength__dot" />
-                      <p>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardBody>
-            </Card>
           </section>
 
           <section className="portfolio-section portfolio-section--divided">
@@ -1228,25 +1175,6 @@ function CoursePage({ course }) {
             </Card>
           </section>
 
-          <section className="portfolio-section portfolio-section--divided">
-            <div className="portfolio-section__intro portfolio-section__intro--framed">
-              <p className="portfolio-kicker">Lokal demo</p>
-              <h2>Hvordan prosjektet kan startes</h2>
-            </div>
-
-            <Card className="border border-slate-200 bg-white/95 shadow-sm">
-              <CardBody className="gap-5 p-6 md:p-8">
-                <div className="bi-file-list">
-                  {golfStorePresentation.runSteps.map((item) => (
-                    <div key={item} className="bi-file-list__item">
-                      <span className="portfolio-strength__dot" />
-                      <p>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardBody>
-            </Card>
-          </section>
         </>
       ) : null}
 
